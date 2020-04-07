@@ -12,7 +12,8 @@ class CarsService {
     }
 
     async getAll() {
-
+        let cars = await dbContext.Cars.find()
+        return cars
     }
 }
 

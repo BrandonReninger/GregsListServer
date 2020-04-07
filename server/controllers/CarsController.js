@@ -11,9 +11,13 @@ export class CarsController extends BaseController {
             .get("", this.getAll)
             .post("", this.create);
     }
-    async getAll(_, res, next) {
+    async getAll(req, res, next) {
         try {
-            return res.send(["value1", "value2"]);
+            let cars = await carsService.getAll()
+            res.send({
+                data: cars,
+                message: "Here's your cars bro."
+            })
         } catch (error) {
             next(error);
         }
